@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DailyPoetry.Views.MainPage"
+             xmlns:viewmodel="clr-namespace:DailyPoetry.ViewModels"
+             Title="MainPage"
+             x:DataType="viewmodel:PoetryViewModel">
+    <Grid RowDefinitions="100, Auto, Auto, *"
+              ColumnDefinitions=".75*, .25*" 
+              Padding="10"
+              RowSpacing="10"
+              ColumnSpacing="10">
+        <Image Grid.ColumnSpan="2"
+                     Source="logo.png"
+                     BackgroundColor="Transparent"/>
+        <Entry Placeholder="Enter task"
+                    Text="{Binding Text}"
+                   Grid.Row="1"/>
+        <Button Text="Add"
+                      Command="{Binding SetTextCommand}"
+                      Grid.Row="1"
+                      Grid.Column="1"/>
+        <Label Text="{Binding Text}" Grid.Row="2" Grid.ColumnSpan="2"/>
+    </Grid>
+</ContentPage>

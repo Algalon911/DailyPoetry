@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="DailyPoetry.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DailyPoetry"
+    xmlns:view="clr-namespace:DailyPoetry.Views"
+    Shell.FlyoutBehavior="Disabled">
+    <!--这里增加命名空间DailyPoetry.View-->
+    
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate view:MainPage}" 
+        Route="MainPage" />
+    <!--这里改了命名空间-->
+
+
+</Shell>
