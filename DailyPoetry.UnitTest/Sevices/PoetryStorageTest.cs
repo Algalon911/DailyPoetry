@@ -8,10 +8,7 @@ namespace DailyPoetry.UnitTest.Sevices;
 [Collection(nameof(NotThreadSafeResourceCollection))]
 public class PoetryStorageTest : IDisposable
 {
-    public PoetryStorageTest()
-    {
-        File.Delete(PoetryStorage.PoetryDbPath);
-    }
+    public PoetryStorageTest() => File.Delete(PoetryStorage.PoetryDbPath);
 
     public void Dispose() => File.Delete(PoetryStorage.PoetryDbPath);
 
@@ -60,8 +57,8 @@ public class PoetryStorageTest : IDisposable
     {
         var poetryStorage = await GetInitializedPoetryStorage();
         var poetry = await poetryStorage.GetPoetryAsync(
-            Expression.Lambda<Func<Poetry, bool>>(Expression.Constant(true),
-                Expression.Parameter(typeof(Poetry), "p")), 0, int.MaxValue);
+            Expression.Lambda<Func<Poem, bool>>(Expression.Constant(true),
+                Expression.Parameter(typeof(Poem), "p")), 0, int.MaxValue);
         Assert.Equal(30, poetry.Count());
         await poetryStorage.CloseAsync();
     }
@@ -70,7 +67,7 @@ public class PoetryStorageTest : IDisposable
     /// 获取已经初始化的PoetryStorage
     /// </summary>
     /// <returns></returns>
-    private static async Task<PoetryStorage> GetInitializedPoetryStorage()
+    public static async Task<PoetryStorage> GetInitializedPoetryStorage()
     {
         var preferenceStorageMock = new Mock<IPreferenceStorage>();
         var mockPreferenceStorage = preferenceStorageMock.Object;

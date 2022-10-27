@@ -2,7 +2,7 @@
 namespace DailyPoetry.Models;
 
 [Table("works")]
-public class Poetry
+public class Poem
 {
     [Column("id")]
     public int Id { get; set; }

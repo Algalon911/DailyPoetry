@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DailyPoetry.Views.ResultPage"
+             xmlns:b="clr-namespace:TheSalLab.MauiBehaviors;assembly=TheSalLab.MauiBehaviors"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:DailyPoetry.ViewModels"
+             xmlns:model="clr-namespace:DailyPoetry.Models"
+             Title="ResultPage"
+             x:DataType="viewmodel:ResultPageViewModel">
+    <!--<ContentPage.Behaviors>
+        <b:MauiEventHandlerBehavior EventName="NavigatedTo">
+            <b:MauiActionCollection>
+                <b:MauiInvokeCommandAction 
+                     Command="{Binding NavigatedToCommand}">
+                </b:MauiInvokeCommandAction>
+            </b:MauiActionCollection>
+        </b:MauiEventHandlerBehavior>
+    </ContentPage.Behaviors>-->
+    
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior 
+            EventName="NavigatedTo"
+            Command="{Binding NavigatedToCommand}"/>
+    </ContentPage.Behaviors>
+
+    <Grid>
+        <!--<ListView ItemsSource="{Binding Poetry}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:Poem">
+                    <ViewCell>
+                        <Label Text="{Binding Name}"></Label>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+        <CollectionView
+            ItemsSource="{Binding Poetry}"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Poem">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="60">
+                            <Grid Padding="0">
+                                <Label Text="{Binding Name}" />
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+    
+    
+</ContentPage>

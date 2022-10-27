@@ -35,11 +35,11 @@ public class PoetryStorage : IPoetryStorage
         preferenceStorage.Set(PoetryStorageConstant.VersionKey, PoetryStorageConstant.Version);
     }
 
-    public async Task<IEnumerable<Poetry>> GetPoetryAsync(Expression<Func<Poetry, bool>> where, int skip, int take) => 
-        await Connection.Table<Poetry>().Where(where).Skip(skip).Take(take).ToListAsync();
+    public async Task<IEnumerable<Poem>> GetPoetryAsync(Expression<Func<Poem, bool>> where, int skip, int take) => 
+        await Connection.Table<Poem>().Where(where).Skip(skip).Take(take).ToListAsync();
 
-    public async Task<Poetry> GetPoemAsync(int id) => 
-        await Connection.Table<Poetry>().FirstOrDefaultAsync(p => p.Id == id);
+    public async Task<Poem> GetPoemAsync(int id) => 
+        await Connection.Table<Poem>().FirstOrDefaultAsync(p => p.Id == id);
 
     public async Task CloseAsync() => await Connection.CloseAsync();
 }

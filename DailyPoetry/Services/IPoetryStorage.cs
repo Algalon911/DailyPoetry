@@ -6,7 +6,7 @@ public interface IPoetryStorage
 {
     bool IsInitialized { get; }
     Task InitailizeAsync();
-    Task<Poetry> GetPoemAsync(int id);
-    Task<IEnumerable<Poetry>> GetPoetryAsync(
-        Expression<Func<Poetry, bool>> where, int skip, int take);
+    Task<Poem> GetPoemAsync(int id);
+    Task<IEnumerable<Poem>> GetPoetryAsync(
+        Expression<Func<Poem, bool>> where, int skip, int take);
 }
